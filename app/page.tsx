@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -8,7 +9,8 @@ export default function Page() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-[#1B1B1B]">
+    <div className="min-h-screen bg-white text-neutral-900">
+      {/* NAV */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-neutral-200">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -27,6 +29,7 @@ export default function Page() {
         </div>
       </header>
 
+      {/* HERO */}
       <section className="relative">
         <div className="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -46,4 +49,45 @@ export default function Page() {
               </a>
             </div>
             <div className="mt-6 flex items-center gap-5 text-sm text-neutral-600">
-              <div className="flex items-center gap-2"><Shield className="h-4
+              <div className="flex items-center gap-2"><Shield className="h-4 w-4"/>NMLS-aware & compliance-minded</div>
+              <div className="flex items-center gap-2"><Clock className="h-4 w-4"/>Fast turn times</div>
+              <div className="flex items-center gap-2"><Star className="h-4 w-4"/>Concierge communication</div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.08)] border border-neutral-200 p-6 bg-white">
+            {!submitted ? (
+              <form className="grid gap-3" onSubmit={(e)=>{e.preventDefault(); setSubmitted(true);}}>
+                <div className="grid md:grid-cols-2 gap-3">
+                  <input required placeholder="Full Name" className="border rounded-xl px-3 py-2" />
+                  <input required type="email" placeholder="Work Email" className="border rounded-xl px-3 py-2" />
+                </div>
+                <div className="grid md:grid-cols-2 gap-3">
+                  <input required placeholder="Company / Brokerage" className="border rounded-xl px-3 py-2" />
+                  <input placeholder="NMLS # (if applicable)" className="border rounded-xl px-3 py-2" />
+                </div>
+                <input required placeholder="Phone" className="border rounded-xl px-3 py-2" />
+                <textarea placeholder="What products do you originate? (FHA, Conv, DSCR, HELOC, SBA, etc.)" className="border rounded-xl px-3 py-2 min-h-[100px]" />
+                <button type="submit" className="rounded-2xl px-4 py-2 bg-black text-white hover:bg-black/90">Submit Inquiry</button>
+                <p className="text-xs text-neutral-500">By submitting, you agree to be contacted about processing services.</p>
+              </form>
+            ) : (
+              <div className="text-center py-4">
+                <h3 className="text-lg font-medium">Thanks—you're on our list!</h3>
+                <p className="text-neutral-600 mt-1 text-sm">We’ll reach out shortly to schedule your intake call.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="py-10 border-t border-neutral-200 bg-white">
+        <div className="max-w-6xl mx-auto px-4 text-sm text-neutral-600 flex items-center justify-between">
+          <p>© {new Date().getFullYear()} Luxury Loan Processing. All rights reserved.</p>
+          <a href="#contact" className="hover:opacity-80">Contact</a>
+        </div>
+      </footer>
+    </div>
+  );
+}
