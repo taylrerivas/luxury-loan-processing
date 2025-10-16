@@ -9,7 +9,7 @@ export default function Page() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
+  <div className="min-h-screen bg-white text-neutral-900">
       {/* NAV */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-neutral-200">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
